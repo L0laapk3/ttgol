@@ -17,12 +17,8 @@ module tt_um_L0laapk3 (
 );
 
 	reg [511:0] r;
-	always @(posedge clk or negedge rst_n) begin
-		if (!rst_n) begin
-			r <= 0;
-		end else begin
-			r <= {r[510:0], ui_in[0]};
-		end
+	always @(posedge clk) begin
+		r <= {r[510:0], ui_in[0]};
 	end
 	assign uo_out[0] = r[511];
 
