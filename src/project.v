@@ -16,11 +16,11 @@ module tt_um_L0laapk3 (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-	reg [511:0] r;
+	reg [255:0] r;
 	always @(posedge clk) begin
-		r <= {r[510:0], ui_in[0]};
+		r <= {r[254:0], ui_in[0]};
 	end
-	assign uo_out[0] = r[511];
+	assign uo_out[0] = r[255];
 
 	assign uo_out[7:1] = 0;
 	assign uio_out = 0;
