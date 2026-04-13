@@ -27,6 +27,6 @@ module tt_um_L0laapk3 (
 	assign uio_oe  = 0;
 
 	// List all unused inputs to prevent warnings
-	wire _unused = &{ena, 1'b0, ui_in[7:1], uio_in};
+	wire _unused = &{ena, rst_n, ui_in[7:1], uio_in};
 
 endmodule
