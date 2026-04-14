@@ -16,17 +16,15 @@ module tt_um_L0laapk3 (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-	reg [511:0] r;
-	always @(posedge clk) begin
-		r <= {r[510:0], ui_in[0]};
-	end
-	assign uo_out[0] = r[511];
+	gol #(
+		.WIDTH(56),
+		.HEIGHT(32)
+	) gol_inst (
+		.clk(clk),
+		.rst_n(rst_n)
+	);
 
-	assign uo_out[7:1] = 0;
-	assign uio_out = 0;
-	assign uio_oe  = 0;
 
-	// List all unused inputs to prevent warnings
-	wire _unused = &{ena, rst_n, ui_in[7:1], uio_in};
+	wire _unused = &{ena, 1'b0, ui_in[7:1], uio_in};
 
 endmodule
